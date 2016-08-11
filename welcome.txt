@@ -1,15 +1,15 @@
 
-PROGRAMAR CORREO
+SCHEDULE E-MAIL
 
-Este script programa el envío de correo electrónico usando mutt.
+This script schedules e-mails using mutt and at daemon
 
-Datos que necesitarás:
+Needed information:
 
-1) Ruta al archivo de texto o html con el contenido del correo.
-2) Correo del remitente
-3) Nombre del remitente
-4) Correo del destinatario
-5) Asunto del correo
-6) Fecha para el envío
+1) Path to e-mail body text file or html
+2) Sender email address
+3) Sender Name
+4) Destination email
+5) Email Subject
+6) Delivery date
 
 León Ramos - 2016 - leon.ramos@meganucleo.mx
