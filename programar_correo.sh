@@ -5,6 +5,8 @@ CURRY=$(date +%Y)
 NEXTY=$((CURRY+1))
 BACK="<OK>=Next <Cancel>=Back CTRL+C=exit"
 STEP="welcome"
+SNAME="Default name"
+SMAIL="default@email.com"
 
 function null {
   VALUE="$1"
@@ -97,11 +99,14 @@ function attach {
   PREV="time"
   NEXT="build"
   dialog --title "Attachment"  --yesno "Add attachment to e-mail?" 6 25
-  if [ "$?" -eq "0" ] ; then
+  RESP="$?"
+  if [ "$RESP" -eq "0" ] ; then
     ATTACH="yes"
   else
     ATTACH="no"
   fi
+  
+  #echo "RESP: '$RESP' ATTACH: '$ATTACH'"; sleep 3
   
   if [ "$ATTACH" == "yes" ] ; then
     CONT="no"
@@ -109,6 +114,8 @@ function attach {
       APATH=$(dialog --stdout --backtitle "$BACK" --title "Path to attachment file: " --fselect "" 8 40 "$APATH")
       null "$APATH"
     done
+  else
+    STEP="$NEXT"
   fi
 }
 
@@ -128,9 +135,9 @@ function build {
   echo "Email: '$EMAIL'"
   echo
   if [ "$ATTACH" == "no" ] ; then
-    echo "mutt -s \"$SUBJECT\" $DMAIL < $MPATH" | at $TIME $DATE
+    echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" $DMAIL < $MPATH" | at $TIME $DATE
   else
-    echo "mutt -s \"$SUBJECT\" -a $APATH -- $DMAIL < $MPATH" | at $TIME $DATE
+    echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" -a $APATH -- $DMAIL < $MPATH" | at $TIME $DATE
   fi
   STEP="exit"
 }
