@@ -49,7 +49,7 @@ function sname {
   CONT="no"
   while [ "$CONT" != "yes" ] ; do 
     SNAME=$(dialog --stdout --backtitle "$BACK" --inputbox "Sender's name: " 8 40 "$SNAME" )
-    null $SNAME
+    null "$SNAME"
   done
 }
 
@@ -59,7 +59,7 @@ function dmail {
   CONT="no"
   while [ "$CONT" != "yes" ] ; do 
     DMAIL=$(dialog --stdout --backtitle "$BACK" --inputbox "Destination email: " 8 40 "$DMAIL" )
-    null $DMAIL
+    null "$DMAIL"
   done
 }
 
@@ -69,7 +69,7 @@ function subject {
   CONT="no"
   while [ "$CONT" != "yes" ] ; do 
     SUBJECT=$(dialog --stdout --backtitle "$BACK" --inputbox "Email Subject: " 8 40 "$SUBJECT" )
-    null $SUBJECT
+    null "$SUBJECT"
   done
 }
 
@@ -77,9 +77,10 @@ function date {
   PREV="subject"
   NEXT="timeb"
   CONT="no"
+  if [ -z
   while [ "$CONT" != "yes" ] ; do 
     DATE=$(dialog --stdout --backtitle "$BACK" --date-format %d.%m.%Y --calendar "Select delivery date" 0 0 "$DATE" )
-    null $DATE
+    null "$DATE"
   done
 }
 
@@ -89,7 +90,7 @@ function timeb {
   CONT="no"
   while [ "$CONT" != "yes" ] ; do 
     TIME=$(dialog --stdout --backtitle "$BACK" --time-format %H:%M --timebox "Select delivery time:" 0 0 )
-    null $TIME
+    null "$TIME"
   done
 }
 
@@ -107,7 +108,7 @@ function attach {
     CONT="no"
     while [ "$CONT" != "yes" ] ; do 
       APATH=$(dialog --stdout --backtitle "$BACK" --title "Path to attachment file: " --fselect "" 8 40 "$APATH")
-      null $APATH
+      null "$APATH"
     done
   fi
 }
