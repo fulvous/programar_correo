@@ -1,0 +1,15 @@
+
+PROGRAMAR CORREO
+
+Este script programa el envío de correo electrónico usando mutt.
+
+Datos que necesitarás:
+
+1) Ruta al archivo de texto o html con el contenido del correo.
+2) Correo del remitente
+3) Nombre del remitente
+4) Correo del destinatario
+5) Asunto del correo
+6) Fecha para el envío
+
+León Ramos - 2016 - leon.ramos@meganucleo.mx
