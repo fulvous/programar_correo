@@ -65,7 +65,7 @@ function dmail {
 
 function subject {
   PREV="dmail"
-  NEXT="date"
+  NEXT="dateb"
   CONT="no"
   while [ "$CONT" != "yes" ] ; do 
     SUBJECT=$(dialog --stdout --backtitle "$BACK" --inputbox "Email Subject: " 8 40 "$SUBJECT" )
@@ -73,7 +73,7 @@ function subject {
   done
 }
 
-function date {
+function dateb {
   PREV="subject"
   NEXT="timeb"
   CONT="no"
@@ -84,7 +84,7 @@ function date {
 }
 
 function timeb {
-  PREV="date"
+  PREV="dateb"
   NEXT="attach"
   CONT="no"
   while [ "$CONT" != "yes" ] ; do 
