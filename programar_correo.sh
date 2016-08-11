@@ -32,6 +32,11 @@ function path {
   while [ "$CONT" != "yes" ] ; do 
     MPATH=$(dialog --stdout --backtitle "$BACK" --title "Path to email body text file: " --fselect "" 8 40)
     null "$MPATH"
+    if [ "$( echo $MPATH | egrep -ic 'html|htm$' )" -gt 0 ] ; then
+      HTML="yes"
+    else
+      HTML="no"
+    fi
   done
 }
 
@@ -135,11 +140,17 @@ function build {
   echo "Email: '$EMAIL'"
   echo
   if [ "$ATTACH" == "no" ] ; then
-    #echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" $DMAIL < $MPATH" | at $TIME $DATE
-    echo "mutt -s \"$SUBJECT\" $DMAIL < $MPATH" | at $TIME $DATE
+    if [ "$HTML" == "yes" ] ; then
+      echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" $DMAIL < $MPATH" | at $TIME $DATE
+    else
+      echo "mutt -s \"$SUBJECT\" $DMAIL < $MPATH" | at $TIME $DATE
+    fi
   else
-    #echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" -a $APATH -- $DMAIL < $MPATH" | at $TIME $DATE
-    echo "mutt -s \"$SUBJECT\" -a $APATH -- $DMAIL < $MPATH" | at $TIME $DATE
+    if [ "$HTML" == "yes" ] ; then
+      echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" -a $APATH -- $DMAIL < $MPATH" | at $TIME $DATE
+    else
+      echo "mutt -s \"$SUBJECT\" -a $APATH -- $DMAIL < $MPATH" | at $TIME $DATE
+    fi
   fi
   STEP="exit"
 }
