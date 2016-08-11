@@ -143,7 +143,7 @@ EMAIL="\"$SNAME\" <$SMAIL>"
 echo "Email: '$EMAIL'"
 echo
 if [ "$ATTACH" == "yes" ] ; then
-  mutt -s "$SUBJECT" -- $DMAIL < $MPATH
+  mutt -s "$SUBJECT" $DMAIL < $MPATH
 else
   mutt -s "$SUBJECT" -a $APATH -- $DMAIL < $MPATH
 fi
