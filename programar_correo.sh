@@ -124,7 +124,7 @@ function build {
     echo "Attachment '$APATH'"
   fi
   
-  EMAIL="\"$SNAME\" <$SMAIL>"
+  export EMAIL="\"$SNAME\" <$SMAIL>"
   echo "Email: '$EMAIL'"
   echo
   if [ "$ATTACH" == "no" ] ; then
