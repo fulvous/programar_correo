@@ -135,9 +135,11 @@ function build {
   echo "Email: '$EMAIL'"
   echo
   if [ "$ATTACH" == "no" ] ; then
-    echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" $DMAIL < $MPATH" | at $TIME $DATE
+    #echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" $DMAIL < $MPATH" | at $TIME $DATE
+    echo "mutt -s \"$SUBJECT\" $DMAIL < $MPATH" | at $TIME $DATE
   else
-    echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" -a $APATH -- $DMAIL < $MPATH" | at $TIME $DATE
+    #echo "mutt -e \"set content_type=text/html\" -s \"$SUBJECT\" -a $APATH -- $DMAIL < $MPATH" | at $TIME $DATE
+    echo "mutt -s \"$SUBJECT\" -a $APATH -- $DMAIL < $MPATH" | at $TIME $DATE
   fi
   STEP="exit"
 }

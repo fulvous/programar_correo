@@ -5,7 +5,7 @@ This script schedules e-mails using mutt and at daemon
 
 Needed information:
 
-1) Path to e-mail body text file or html
+1) Path to e-mail body text file
 2) Sender email address
 3) Sender Name
 4) Destination email
