@@ -78,7 +78,7 @@ function dateb {
   NEXT="timeb"
   CONT="no"
   while [ "$CONT" != "yes" ] ; do 
-    DATE=$(dialog --stdout --backtitle "$BACK" --date-format %d.%m.%Y --calendar "Select delivery date" 0 0 "$DATE" )
+    DATE=$(dialog --stdout --backtitle "$BACK" --date-format %d.%m.%Y --calendar "Select delivery date" 0 0 )
     null "$DATE"
   done
 }
