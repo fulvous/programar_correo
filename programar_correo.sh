@@ -138,3 +138,12 @@ echo "Delivery date (dd/mm/yyy): '$DAY/$MONTH/$YEAR'"
 if [ "$ATTACH" == "yes" ] ; then
   echo "Attachment '$APATH'"
 fi
+
+EMAIL="'$SNAME' <$SMAIL>"
+echo "Email: '$EMAIL'"
+echo
+if [ "$ATTACH" == "yes" ] ; then
+  mutt -i $MPATH -s "$SUBJECT" $DMAIL
+else
+  mutt -i $MPATH -s "$SUBJECT" -a $APATH $DMAIL
+fi
