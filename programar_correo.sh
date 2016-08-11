@@ -143,7 +143,7 @@ EMAIL="\"$SNAME\" <$SMAIL>"
 echo "Email: '$EMAIL'"
 echo
 if [ "$ATTACH" == "no" ] ; then
-  mutt -s "$SUBJECT" $DMAIL < $MPATH
+  mutt -s "$SUBJECT" $DMAIL < $MPATH | at 4:14 AM $DAY.$MONTH.$YEAR
 else
-  mutt -s "$SUBJECT" -a $APATH -- $DMAIL < $MPATH
+  mutt -s "$SUBJECT" -a $APATH -- $DMAIL < $MPATH | at 4:15 AM $DAY.$MONTH.$YEAR
 fi
