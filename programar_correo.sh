@@ -139,7 +139,7 @@ if [ "$ATTACH" == "yes" ] ; then
   echo "Attachment '$APATH'"
 fi
 
-EMAIL="'$SNAME' <$SMAIL>"
+EMAIL="\"$SNAME\" <$SMAIL>"
 echo "Email: '$EMAIL'"
 echo
 if [ "$ATTACH" == "yes" ] ; then
